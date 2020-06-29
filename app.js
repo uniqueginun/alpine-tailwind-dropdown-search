@@ -1,3 +1,18 @@
+let alpineScript = document.createElement("script");
+alpineScript.setAttribute(
+  "src",
+  "https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+);
+document.head.appendChild(alpineScript);
+
+let tailwindStyle = document.createElement("link");
+tailwindStyle.setAttribute("rel", "stylesheet");
+tailwindStyle.setAttribute(
+  "href",
+  "https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+);
+document.head.appendChild(tailwindStyle);
+
 const createHTMLElement = (el, attrs, inner = null) => {
   const element = document.createElement(el);
   if (inner) {
@@ -20,7 +35,7 @@ function searchDropdown() {
       el.value = "";
       let options = el.options;
       Array.from(options).forEach((opt) => {
-        if (target.innerHTML === opt.value) {
+        if (target.dataset.value.toLowerCase() === opt.value.toLowerCase()) {
           opt.setAttribute("selected", true);
         }
       });
@@ -42,8 +57,8 @@ function searchDropdown() {
           node.className =
             "w-48 min-w-full rounded p-3 bg-gray-300 mb-1 cursor-pointer";
           node.setAttribute("x-on:click", "pickOption");
-          var textnode = document.createTextNode(opt.text);
-          node.appendChild(textnode);
+          node.setAttribute("data-value", opt.value.toLowerCase());
+          node.appendChild(document.createTextNode(opt.text));
           resultBox.appendChild(node);
         }
       });
