@@ -18,20 +18,20 @@
   >
     <div class="container mx-auto p-6 text-center">
       <div class="mt-6" x-data="searchDropdown()">
+        <select x-ref="select">
+          <option value="">select from menu</option>
+          <option>item1</option>
+          <option>item2</option>
+          <option>item3</option>
+          <option>item4</option>
+        </select>
+
         <button
           class="bg-blue-500 text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
           @click="open = true"
         >
-          Open Dropdown
+          find
         </button>
-
-        <select x-ref="select">
-          <option>Consectetur adipisicing.</option>
-          <option>Neque nemo earum eaque vel aperiam</option>
-          <option>Vel aperiam cupiditate. Quae quam dolorum eaque</option>
-          <option>Nemo earum eaque vel aperiam cupiditate.</option>
-          <option>Eaque cupiditate eos illo debitis</option>
-        </select>
 
         <div
           class="absolute top-0 left-0 w-full h-full flex items-center justify-center"
@@ -47,6 +47,7 @@
               class="rounded p-3 outline-none w-full bg-gray-200"
               placeholder="Search..."
               @keypress="lookup"
+              x-ref="keyword"
             />
             <ul id="result" class="m-4 text-left w-full"></ul>
             <div class="flex justify-center mt-8">
