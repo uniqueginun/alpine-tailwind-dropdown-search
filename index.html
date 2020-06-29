@@ -14,25 +14,19 @@
     <title>Alpine AND Tailwind</title>
   </head>
   <body
+    x-data="searchDropdown()"
+    x-init="document.getElementById('dropdownsearchbutton') ? null : loadButton()"
     class="mx-auto w-screen h-screen bg-gray-100 flex items-center justify-center"
   >
     <div class="container mx-auto p-6 text-center">
-      <div class="mt-6" x-data="searchDropdown()">
-        <select x-ref="select">
+      <div class="mt-6">
+        <select x-ref="select" class="rounded shadow p-2 w-64 outline-none">
           <option value="">select from menu</option>
-          <option>item1</option>
-          <option>item2</option>
-          <option>item3</option>
-          <option>item4</option>
+          <option>php</option>
+          <option>javascript</option>
+          <option>html</option>
+          <option>css</option>
         </select>
-
-        <button
-          class="bg-blue-500 text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none"
-          @click="open = true"
-        >
-          find
-        </button>
-
         <div
           class="absolute top-0 left-0 w-full h-full flex items-center justify-center"
           style="background-color: rgba(0, 0, 0, 0.5);"

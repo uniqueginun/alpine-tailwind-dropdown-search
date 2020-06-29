@@ -11,9 +11,7 @@ function searchDropdown() {
           opt.setAttribute("selected", true);
         }
       });
-      this.open = false;
-      document.getElementById("result").innerHTML = "";
-      this.$refs.keyword.value = "";
+      this.cleanArea();
     },
 
     lookup({ target }) {
@@ -36,6 +34,20 @@ function searchDropdown() {
           resultBox.appendChild(node);
         }
       });
+    },
+    cleanArea() {
+      this.open = false;
+      document.getElementById("result").innerHTML = "";
+      this.$refs.keyword.value = "";
+    },
+    loadButton() {
+      var searchButton = document.createElement("button");
+      searchButton.innerHTML = "search dropdown";
+      searchButton.setAttribute("id", "dropdownsearchbutton");
+      searchButton.setAttribute("x-on:click", "open = true");
+      searchButton.className =
+        "bg-blue-500 text-white px-4 py-2 rounded no-outline focus:shadow-outline select-none";
+      this.$refs.select.after(searchButton);
     },
   };
 }
